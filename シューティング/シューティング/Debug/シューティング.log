@@ -1,9 +1,4 @@
-﻿  Main.cpp
+﻿  keyboardcheck.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-  コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  player.cpp
-  keyboardcheck.cpp
-  GameScene.cpp
   シューティング.vcxproj -> C:\Users\しょうま\Desktop\シューティング！\シューティング\Debug\シューティング.exe
   シューティング.vcxproj -> C:\Users\しょうま\Desktop\シューティング！\シューティング\Debug\シューティング.pdb (Partial PDB)

@@ -1,7 +1,7 @@
 #include"GameScene.h"
 #include "keyboardcheck.h"
 #include "player.h"
-
+#include "bullet.h"
 //	ゲームシーンの画像情報を入れておく配列
 LPDIRECT3DTEXTURE9			g_pGameTexture[GAMESCENE_MAX];
 
@@ -26,13 +26,15 @@ void GameSceneDraw()
 	// 描画を開始
 	g_pDirect3DDevice->BeginScene();
 
+	bulletDraw();
+
 	// テクスチャをステージに割り当てる
 	g_pDirect3DDevice->SetTexture(0, g_pGameTexture[BACKGROUND_TEX]);
 	// 描画
 	g_pDirect3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, backGround, sizeof(CUSTOMVERTEX));
 
 	playerDraw();
-
+	
 	// 描画を終了
 	g_pDirect3DDevice->EndScene();
 	// 画面に表示
@@ -65,7 +67,7 @@ void GameSceneInit()
 		"space.png",
 		&g_pGameTexture[BACKGROUND_TEX]);
 
-	// 船の読み込み
+	// プレイヤーの読み込み
 	D3DXCreateTextureFromFileEx(
 		g_pDirect3DDevice,
 		"player.png",              // ファイル名
@@ -81,6 +83,23 @@ void GameSceneInit()
 		NULL,
 		NULL,
 		&g_pGameTexture[PLAYER_TEX]           // テクスチャ名
+	);
+	//弾の読み込み
+	D3DXCreateTextureFromFileEx(
+		g_pDirect3DDevice,
+		"bullet.png",              // ファイル名
+		0,
+		0,
+		0,
+		0,
+		D3DFMT_A1R5G5B5,                // 色抜きを可能に
+		D3DPOOL_MANAGED,
+		D3DX_FILTER_LINEAR,
+		D3DX_FILTER_LINEAR,
+		D3DCOLOR_ARGB(255, 0, 255, 0),  //緑を透過
+		NULL,
+		NULL,
+		&g_pGameTexture[BULLET_TEX]           // テクスチャ名
 	);
 
 

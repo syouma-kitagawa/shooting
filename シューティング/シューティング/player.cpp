@@ -1,7 +1,7 @@
 #include "GameScene.h"
 #include "player.h"
 #include "keyboardcheck.h"
-
+#include "bullet.h"
 KEYSTATE g_Key[KEYMAX] = { KEY_OFF };
 
 PLAYER_STATE		  g_Player = { 600.f, 550.f,50.f };
@@ -16,6 +16,7 @@ void playerControl(void)
 	KeyCheck(&g_Key[KEY_A], DIK_A);
 	KeyCheck(&g_Key[KEY_S], DIK_S);
 	KeyCheck(&g_Key[KEY_D], DIK_D);
+	KeyCheck(&g_Key[KEY_Z], DIK_Z);
 
 	if (g_Key[KEY_W] == KEY_ON)
 	{
@@ -36,7 +37,19 @@ void playerControl(void)
 	{
 		g_Player.Posx += MOVE_SPEED;
 	}
-
+	if (g_Key[KEY_Z] == KEY_ON)
+	{
+		for (int i = 0; i < BOMBNUM; i++)
+		{
+			if (bulletBoll[i].bulletFlg=false)
+			{
+				bulletBoll[i].bulletFlg = true;
+				bulletBoll[i].x = g_Player.Posx;
+				bulletBoll[i].y = g_Player.Posy;
+			}
+		}
+		bulletDraw();
+	}
 }
 void playerDraw()
 {

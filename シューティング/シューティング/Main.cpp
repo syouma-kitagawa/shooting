@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "keyboardcheck.h"
 #include "player.h"
+#include "bullet.h"
 
 #define WINDOW_W 1280					// ウィンドウ幅
 #define WINDOW_H 720					// ウィンドウ高さ
@@ -123,7 +124,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 	//---------------------------------------------------------------------
 
 	GameSceneInit();	// ゲームシーンの初期化関数
-
+	bulletInit();       //弾の初期化
 	DWORD SyncOld = timeGetTime();	//	システム時間を取得
 	DWORD SyncNow;
 
@@ -143,6 +144,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLin
 			if (SyncNow - SyncOld >= 1000 / 60) //	1秒間に60回この中に入る
 			{
 				playerControl();
+
 				GameSceneDraw();		// ゲームシーンの描画関数
 
 				SyncOld = SyncNow;
